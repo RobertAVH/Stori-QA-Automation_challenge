@@ -1,0 +1,25 @@
+{
+  "logo": {
+      "GetFieldBy": "Xpath",
+      "ValueToFind": "//img[@class='logoClass']"
+    },
+
+  "ipt_suggestion_class": {
+    "GetFieldBy": "Xpath",
+    "ValueToFind": "//input[@id='autocomplete']"
+  },
+
+  "options_suggestion": {
+    "GetFieldBy": "Xpath",
+    "ValueToFind": "//ul[@id='ui-id-1']"
+  },
+  "dropdown_example": {
+    "GetFieldBy": "Xpath",
+    "ValueToFind": "//*[@class='block large-row-spacer'][1]/descendant::select"
+  },
+  "button_new_window": {
+    "GetFieldBy": "Xpath",
+    "ValueToFind": "//button[@id='openwindow']"
+  }
+
+}

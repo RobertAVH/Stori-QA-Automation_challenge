@@ -25,7 +25,7 @@ class StepDefinitions():
         with allure.step("Step 1"):
             gf.get_json_file(self, "challenge_page")
             #gf.create_appium_driver(self)
-            gf.wait_element(self, "logo", )
+            # gf.wait_element(self, "logo", )
 
 
 @step("I type (.*) in suggestion class input")

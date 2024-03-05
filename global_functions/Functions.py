@@ -6,13 +6,21 @@ import pytest
 from appium.options.common import AppiumOptions
 from selenium import webdriver
 from selenium.common import NoSuchElementException, TimeoutException
-from selenium.webdriver.chrome.options import Options as OpcionesChrome
+from selenium.webdriver.common import service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
+from selenium.webdriver.edge.service import Service as EdgeService
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.opera import OperaDriverManager
+from selenium.webdriver.chrome import service
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver import ChromeOptions as OpcionesChrome
 from Config.Config import Config
-from Config.hooks import *
+from Config.Config_execution import *
 
 
 class Functions(Config):
@@ -25,28 +33,49 @@ class Functions(Config):
         print("----------------")
         print(navegador)
         print("---------------")
-        # global appium_service
-        # appium_service = AppiumService()
-        # appium_service.start()
-        # cap: Dict[str, Any] = {
-        #     "platformName": "Android",
-        #     "appium:automationName": "UiAutomator2",
-        #     "browserName": navegador.lower(),
-        #     "unicodeKeyboard":True,
-        #     "resetKeyboard":True
-        # }
-        # self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', options=AppiumOptions().load_capabilities(cap))
-        # self.driver.implicitly_wait(15)
-        # self.driver.get(URL)
+        cap_chrome: Dict[str, Any] = {
+            "platformName": "Android",
+            "automationName": "UiAutomator2",
+            "browserName": "chrome",
+            "unicodeKeyboard":True,
+            "resetKeyboard":True,
+            "noReset":True
+        }
+        cap_firefox: Dict[str, Any] = {
+            "platformName": "windows",
+            "automationName": "Gecko",
+            "browserName": "Firefox",
+            "marionette":True,
+            "moz:firefoxOptions": {
+                "androidPackage": "org.mozilla.firefox",
+            }
+        }
+        self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', options=AppiumOptions().load_capabilities(cap))
 
-        options = OpcionesChrome()
-        options.add_argument('start-maximized')
-        self.driver = webdriver.Chrome()
-        self.driver.maximize_window()
+
+        # if navegador.lower() == "chrome":
+        #     options = OpcionesChrome()
+        #     options.add_argument('start-maximized')
+        #     self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        # elif navegador.lower() == "edge":
+        #     self.driver = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()))
+        # elif navegador.lower() == "firefox":
+        #     self.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
+        # elif navegador.lower() == "opera":
+        # #     print("Opera browser isn't support by Selenium 4 this test will be run whit Chrome")
+        #     webdriver_service = service.Service(OperaDriverManager().install())
+        #     webdriver_service.start()
+        #
+        #     options = webdriver.ChromeOptions()
+        #     options.add_experimental_option('w3c', True)
+        #
+            # self.driver = webdriver.Remote(webdriver_service.service_url, options=options)
+        # self.driver.maximize_window()
         self.driver.implicitly_wait(10)
         self.driver.get(URL)
         self.ventanas = {'Principal': self.driver.window_handles[0]}
         return self.driver
+
 
     def tearDown(self):
         print("Se cerrará  el DRIVER")

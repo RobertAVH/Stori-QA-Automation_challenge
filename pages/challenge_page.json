@@ -1,7 +1,7 @@
 {
-  "logo": {
+  "lbl_home_page": {
       "GetFieldBy": "Xpath",
-      "ValueToFind": "//img[@class='logoClass']"
+      "ValueToFind": "//h1[contains(text(),'Practice Page')]"
     },
 
   "ipt_suggestion_class": {
@@ -20,6 +20,41 @@
   "button_new_window": {
     "GetFieldBy": "Xpath",
     "ValueToFind": "//button[@id='openwindow']"
+  },
+  "button_view_all_courses": {
+    "GetFieldBy": "Xpath",
+    "ValueToFind": "//button[contains(text(),'VIEW ALL COURSES')]"
+  },
+  "btn_menu": {
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//button[contains(text(),'VIEW ALL COURSES')]"
+  },
+  "input_alerts": {
+    "GetFieldBy": "css",
+    "ValueToFind": "input.inputs[name='enter-name']"
+  },
+  "button_alert": {
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//input[@id='alertbtn' and @value='Alert']"
+  },
+  "button_alert_confirm": {
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//input[@id='confirmbtn']"
+  },
+  "table_example": {
+    "GetFieldBy": "css",
+    "ValueToFind": "table#product[name]"
+  },
+  "table_fixed": {
+    "GetFieldBy": "css",
+    "ValueToFind": ".tableFixHead>table#product"
+  },
+  "iframe": {
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//iframe"
+  },
+  "iframe_option": {
+    "GetFieldBy": "xpath",
+    "ValueToFind": "//*[@class='price-section']/descendant::ul[2]/li[2]"
   }
-
 }

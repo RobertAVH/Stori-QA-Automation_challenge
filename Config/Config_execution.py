@@ -2,6 +2,11 @@ import subprocess
 import sys
 
 def config_execution(argv):
+    """
+    Function that extract the browser param to use in the execution, aditional, run the script
+    :param
+        -argv: parameters to pass to the script
+    """
     global browser
 
     if type(argv) == str:
@@ -17,6 +22,9 @@ def config_execution(argv):
 
 
 def edit_browser(browser):
+    """
+    Create the file with the properties to execution
+    """
     with open("./Config/Config.py", "w", encoding="utf-8") as file:
         filas = file.write(""\
 "import os\n\

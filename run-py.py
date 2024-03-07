@@ -11,7 +11,7 @@ def main():
     if sys.argv[1:]:
         config_execution(sys.argv[1:])
     else:
-        config_execution("opera")
+        config_execution("chrome")
 
 if __name__ == '__main__':
     main()

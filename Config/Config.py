@@ -6,7 +6,7 @@ class Config():
 	Json = basedir + '/pages'
 	Environment = 'Dev'
 	# BROWSER DE PRUEBAS
-	browser = 'opera'
+	browser = 'chrome'
 	# DIRECTORIO DE LA EVIDENCIA
 	Path_Evidencias = basedir + '/data/capturas'
 	# HOJA DE DATOS EXCEL
